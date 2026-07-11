@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -42,5 +43,25 @@ class Official extends Model
     public static function head(): ?self
     {
         return static::where('is_head', true)->first();
+    }
+
+    /**
+     * Inisial nama (maks 2 huruf) untuk avatar saat foto belum ada. Tanda baca
+     * pada placeholder seperti "[NAMA]" dibuang lebih dulu.
+     */
+    protected function initials(): Attribute
+    {
+        return Attribute::get(function () {
+            $clean = trim(preg_replace('/[^\p{L}\s]/u', '', (string) $this->name));
+            if ($clean === '') {
+                return '—';
+            }
+            $words = preg_split('/\s+/', $clean);
+            $ini = '';
+            foreach (array_slice($words, 0, 2) as $w) {
+                $ini .= mb_substr($w, 0, 1);
+            }
+            return mb_strtoupper($ini);
+        });
     }
 }

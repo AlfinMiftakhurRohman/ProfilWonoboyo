@@ -17,7 +17,7 @@
          (1) foto asli mengisi penuh kotak placeholder .ph, (2) gaya paginasi
          on-brand untuk view resources/views/pagination/wonoboyo.blade.php. --}}
     <style>
-        .ph > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+        .ph > img, .avatar > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
         .pager { display: flex; gap: 8px; justify-content: center; align-items: center; flex-wrap: wrap; margin-top: 56px; font-family: 'Space Mono', monospace; font-size: 13px; }
         .pager a, .pager span { min-width: 40px; height: 40px; display: inline-flex; align-items: center; justify-content: center; padding: 0 12px; border-radius: 8px; border: 1px solid rgba(27,26,21,.14); color: #20362a; transition: background .2s, color .2s, border-color .2s; }
         .pager a:hover { background: #20362a; color: #f6f1e7; border-color: #20362a; }
