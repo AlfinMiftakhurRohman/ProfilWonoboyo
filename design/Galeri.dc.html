@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Hanken+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./styles.css">
+<script src="./site.js" defer></script>
+</helmet>
+<div>
+<dc-import name="Nav" active="galeri" hint-size="100%,80px"></dc-import>
+
+<header class="phero"><div class="phero-media ph ph-dark"><span class="ph-lab">Foto kolase desa · 1920 × 900</span></div><div class="phero-scrim"></div><div class="wrap-x phero-inner"><div class="crumb"><a href="Beranda.dc.html">Beranda</a><span class="sep">/</span><span>Galeri</span></div><h1 class="phero-title">Galeri Desa</h1><p class="phero-sub">Potret keseharian, panorama, dan kegiatan warga Wonoboyo. Klik foto untuk memperbesar.</p></div></header>
+
+<section class="sec"><div class="wrap-x"><div class="gallery reveal"><sc-for list="{{ photos }}" as="p" hint-placeholder-count="9"><div class="gitem" data-lightbox data-cap="{{ p.cap }}"><span class="card-img ph" style="position:relative;aspect-ratio:{{ p.ratio }};display:block"><span class="ph-lab">{{ p.cap }}</span></span><span class="gitem-scrim"><span class="gitem-cap">{{ p.cap }}</span></span></div></sc-for></div></div></section>
+
+<div class="lightbox"><button class="lb-close" data-lb-close aria-label="Tutup">✕</button><div class="lightbox-inner"><div class="lb-content" style="position:absolute;inset:0"></div><div class="lightbox-cap"></div></div></div>
+
+<dc-import name="Footer" hint-size="100%,420px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      photos: [
+        { ratio:'4/5', cap:'Perbukitan Wonoboyo' },
+        { ratio:'3/2', cap:'Persawahan warga' },
+        { ratio:'1/1', cap:'Saluran irigasi desa' },
+        { ratio:'3/4', cap:'Jalan desa' },
+        { ratio:'3/2', cap:'Senja di perbukitan' },
+        { ratio:'4/5', cap:'Ladang warga' },
+        { ratio:'1/1', cap:'Kegiatan gotong royong warga' },
+        { ratio:'3/2', cap:'Suasana kampung' },
+        { ratio:'3/4', cap:'Balai desa dan halaman' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

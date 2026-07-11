@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Hanken+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./styles.css">
+<script src="./site.js" defer></script>
+</helmet>
+<div>
+<dc-import name="Nav" active="beranda" hint-size="100%,80px"></dc-import>
+
+<header class="hero"><div class="hero-media ph ph-dark"><span class="ph-lab hero-lab">Foto lanskap desa · perbukitan &amp; persawahan · 1920 × 1200</span></div><div class="hero-scrim"></div><div class="wrap-x hero-inner"><div class="hero-loc">Kec. Klabang · Kab. Bondowoso · Jawa Timur</div><h1 class="hero-title">Desa agraris di <em>perbukitan</em> Bondowoso</h1><p class="hero-tag">Wonoboyo, desa perbukitan di Kecamatan Klabang — dengan sawah, saluran irigasi, dan warga yang guyub. Inilah laman resmi kami.</p></div><a href="#sambutan" class="scrollcue">Gulir<i></i></a></header>
+
+<section class="sec" id="sambutan"><div class="wrap-x"><div class="welcome"><div class="welcome-photo ph reveal"><span class="ph-lab">Foto Kepala Desa<br>potret · 4:5</span></div><div class="reveal d1"><div class="eyebrow" style="margin-bottom:20px">Sambutan Kepala Desa</div><p class="quote"><span class="amark">“</span>Terima kasih sudah menyempatkan singgah di laman desa kami. Lewat halaman ini, kami ingin memperkenalkan Wonoboyo apa adanya — sawah dan ladangnya, orang-orangnya, dan kegiatan sehari-hari yang kami jalani bersama.<span class="amark">”</span></p><div class="sign"><span class="emblem" style="width:46px;height:46px;font-size:22px"></span><span><span class="sign-name">[NAMA KEPALA DESA]</span><span class="sign-role">Kepala Desa Wonoboyo</span></span></div></div></div></div></section>
+
+<section class="wrap-x"><a href="Berita.dc.html" class="notice reveal"><span class="notice-tag">Pengumuman</span><span class="notice-body"><span class="notice-title">[JUDUL PENGUMUMAN TERBARU]</span><span class="notice-date">Diperbarui [TANGGAL]</span></span><span class="notice-more">Baca pengumuman <span class="arw">→</span></span></a></section>
+
+<section class="sec"><div class="wrap-x"><div class="sec-head"><div><div class="eyebrow reveal" style="margin-bottom:18px">Kabar Desa</div><h2 class="h2 reveal">Yang sedang terjadi<br>di desa kami</h2></div><a href="Berita.dc.html" class="btn btn-ghost reveal">Semua berita <span class="arw2">→</span></a></div><div class="news-grid"><sc-for list="{{ news }}" as="n" hint-placeholder-count="3"><a href="Berita-Detail.dc.html" class="card reveal d{{ n.d }}"><div class="card-media"><span class="card-img ph"><span class="ph-lab">{{ n.img }}</span></span><span class="tag {{ n.tagClass }}">{{ n.cat }}</span></div><div class="card-body"><div class="card-date">{{ n.date }}</div><h3 class="card-title">{{ n.title }}</h3><p class="card-ex">{{ n.excerpt }}</p><span class="card-more">Baca selengkapnya <span class="arw">→</span></span></div></a></sc-for></div></div></section>
+
+<section class="sec bg-sand"><div class="wrap-x"><div class="sec-head" style="margin-bottom:64px"><div><div class="eyebrow reveal" style="margin-bottom:18px">Potensi Desa</div><h2 class="h2 reveal">Bertumpu pada tanah<br>dan warganya</h2></div><p class="lead reveal d1">Wonoboyo adalah desa agraris. Kehidupannya bertumpu pada sawah, ternak, dan gotong royong warga — hal-hal sederhana yang menopang keseharian di perbukitan.</p></div>
+
+<div class="feature reveal" style="margin-bottom:96px"><div class="feature-media ph"><span class="ph-lab">Foto persawahan &amp; saluran irigasi<br>5:4</span></div><div><div class="feat-idx">01 — Pertanian</div><h3 class="feat-title">Sawah &amp; Irigasi Warga</h3><p class="feat-text">Sebagian besar warga bertani di sawah dan ladang yang mengandalkan saluran irigasi desa. Tanah perbukitan yang subur dan udara sejuk menjadi modal utama penghidupan sehari-hari.</p><div class="chips"><span class="chip">Sawah</span><span class="chip">Saluran irigasi</span><span class="chip">Ladang</span></div><a href="Potensi-Desa.dc.html" class="btn btn-solid">Selengkapnya <span class="arw2">→</span></a></div></div>
+
+<div class="feature rev reveal"><div class="feature-media ph"><span class="ph-lab">Foto ternak warga<br>5:4</span></div><div><div class="feat-idx">02 — Peternakan</div><h3 class="feat-title">Peternakan Warga</h3><p class="feat-text">Sapi dan kambing menjadi tumpuan tambahan bagi banyak keluarga, dipelihara secara mandiri berdampingan dengan kegiatan bertani sehari-hari.</p><div class="chips"><span class="chip">Sapi</span><span class="chip">Kambing</span></div><a href="Potensi-Desa.dc.html" class="btn btn-ghost">Selengkapnya <span class="arw2">→</span></a></div></div>
+</div></section>
+
+<section class="stats"><div class="wrap-x"><div class="eyebrow cream reveal" style="color:#e8c79a">Wonoboyo dalam angka</div><h2 class="h2 cream reveal" style="margin-top:18px;max-width:640px">Sekilas desa kami hari ini</h2><div class="stats-grid"><sc-for list="{{ stats }}" as="s" hint-placeholder-count="4"><div class="stat reveal"><div class="stat-num">{{ s.val }}</div><div class="stat-unit">{{ s.unit }}</div><div class="stat-lab">{{ s.label }}</div></div></sc-for></div><p class="stats-note">* Angka bersifat ilustratif — akan diperbarui sesuai data administrasi desa terbaru.</p></div></section>
+
+<section class="sec"><div class="wrap-x"><div class="cta reveal"><div class="ph ph-dark" style="position:absolute;inset:0"></div><div class="cta-scrim"></div><div class="cta-inner"><div class="eyebrow" style="color:#e8c79a;margin-bottom:20px">Masih ada lagi</div><h2>Kenali Wonoboyo lebih dekat</h2><p>Pertanian, peternakan, hingga usaha warga yang sedang dirintis — kenali lebih dekat kehidupan sehari-hari Desa Wonoboyo.</p><div class="cta-btns"><a href="Potensi-Desa.dc.html" class="btn btn-amber">Lihat potensi desa <span class="arw2">→</span></a><a href="Kontak.dc.html" class="btn btn-ghost-light">Hubungi kami</a></div></div></div></div></section>
+
+<dc-import name="Footer" hint-size="100%,420px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      news: [
+        { d:1, cat:'Pengumuman', tagClass:'ann', img:'Foto kegiatan posyandu', date:'[TANGGAL]', title:'[JUDUL PENGUMUMAN]', excerpt:'[Ringkasan singkat pengumuman akan tampil di sini — diisi oleh admin desa.]' },
+        { d:2, cat:'Berita', tagClass:'', img:'Foto kegiatan warga', date:'[TANGGAL]', title:'[JUDUL BERITA]', excerpt:'[Ringkasan singkat berita akan tampil di sini — diisi oleh admin desa.]' },
+        { d:3, cat:'Berita', tagClass:'', img:'Foto kegiatan warga', date:'[TANGGAL]', title:'[JUDUL BERITA]', excerpt:'[Ringkasan singkat berita akan tampil di sini — diisi oleh admin desa.]' },
+      ],
+      stats: [
+        { val:'[…]', unit:'Jiwa', label:'Jumlah penduduk' },
+        { val:'[…]', unit:'KK', label:'Kepala keluarga' },
+        { val:'[…]', unit:'Dusun', label:'Wilayah administratif' },
+        { val:'[…]', unit:'Ha', label:'Luas wilayah desa' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

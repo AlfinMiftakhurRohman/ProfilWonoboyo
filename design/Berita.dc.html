@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Hanken+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./styles.css">
+<script src="./site.js" defer></script>
+</helmet>
+<div>
+<dc-import name="Nav" active="berita" hint-size="100%,80px"></dc-import>
+
+<header class="phero"><div class="phero-media ph ph-dark"><span class="ph-lab">Foto kegiatan warga desa · 1920 × 900</span></div><div class="phero-scrim"></div><div class="wrap-x phero-inner"><div class="crumb"><a href="Beranda.dc.html">Beranda</a><span class="sep">/</span><span>Berita &amp; Pengumuman</span></div><h1 class="phero-title">Berita &amp; Pengumuman</h1><p class="phero-sub">Kabar terbaru, kegiatan, dan pengumuman resmi dari Pemerintah Desa Wonoboyo.</p></div></header>
+
+<section class="sec"><div class="wrap-x" data-filter-scope><div class="filterbar"><button class="filter active" data-filter="all">Semua</button><button class="filter" data-filter="berita">Berita</button><button class="filter" data-filter="pengumuman">Pengumuman</button></div>
+<div class="news-grid"><sc-for list="{{ posts }}" as="n" hint-placeholder-count="6"><a href="Berita-Detail.dc.html" class="card reveal" data-cat="{{ n.cat }}"><div class="card-media"><span class="card-img ph"><span class="ph-lab">{{ n.img }}</span></span><span class="tag {{ n.tagClass }}">{{ n.catLabel }}</span></div><div class="card-body"><div class="card-date">{{ n.date }}</div><h3 class="card-title">{{ n.title }}</h3><p class="card-ex">{{ n.excerpt }}</p><span class="card-more">Baca selengkapnya <span class="arw">→</span></span></div></a></sc-for>
+<div class="empty hidden" data-empty><div class="empty-ic">◎</div><h4>Belum ada kabar di kategori ini</h4><p>Coba lihat kategori lain atau kembali lagi nanti untuk kabar terbaru.</p></div>
+</div></div></section>
+
+<dc-import name="Footer" hint-size="100%,420px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      posts: [
+        { cat:'pengumuman', catLabel:'Pengumuman', tagClass:'ann', img:'Foto pengumuman desa', date:'[TANGGAL]', title:'[JUDUL PENGUMUMAN]', excerpt:'[Ringkasan singkat pengumuman — diisi oleh admin desa.]' },
+        { cat:'berita', catLabel:'Berita', tagClass:'', img:'Foto kegiatan warga', date:'[TANGGAL]', title:'[JUDUL BERITA]', excerpt:'[Ringkasan singkat berita — diisi oleh admin desa.]' },
+        { cat:'berita', catLabel:'Berita', tagClass:'', img:'Foto kegiatan warga', date:'[TANGGAL]', title:'[JUDUL BERITA]', excerpt:'[Ringkasan singkat berita — diisi oleh admin desa.]' },
+        { cat:'pengumuman', catLabel:'Pengumuman', tagClass:'ann', img:'Foto pengumuman desa', date:'[TANGGAL]', title:'[JUDUL PENGUMUMAN]', excerpt:'[Ringkasan singkat pengumuman — diisi oleh admin desa.]' },
+        { cat:'berita', catLabel:'Berita', tagClass:'', img:'Foto kegiatan warga', date:'[TANGGAL]', title:'[JUDUL BERITA]', excerpt:'[Ringkasan singkat berita — diisi oleh admin desa.]' },
+        { cat:'pengumuman', catLabel:'Pengumuman', tagClass:'ann', img:'Foto pengumuman desa', date:'[TANGGAL]', title:'[JUDUL PENGUMUMAN]', excerpt:'[Ringkasan singkat pengumuman — diisi oleh admin desa.]' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

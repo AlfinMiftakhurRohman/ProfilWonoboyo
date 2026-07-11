@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Hanken+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./styles.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="./site.js" defer></script>
+</helmet>
+<div>
+<dc-import name="Nav" active="profil" hint-size="100%,80px"></dc-import>
+
+<header class="phero"><div class="phero-media ph ph-dark"><span class="ph-lab">Foto lanskap perbukitan desa · 1920 × 900</span></div><div class="phero-scrim"></div><div class="wrap-x phero-inner"><div class="crumb"><a href="Beranda.dc.html">Beranda</a><span class="sep">/</span><span>Profil Desa</span></div><h1 class="phero-title">Mengenal Wonoboyo</h1><p class="phero-sub">Dari sejarah yang membentuknya hingga tanah dan warga yang menghidupinya hari ini.</p></div></header>
+
+<section class="sec"><div class="wrap-x"><div class="sec-head stack" style="margin-bottom:40px"><div class="eyebrow reveal">Sejarah Desa</div><h2 class="h2 reveal">Bermula dari sebidang<br>tanah subur di lereng</h2></div><div class="body-lg wrap-narrow reveal d1"><p class="dropcap">Konon nama Wonoboyo berasal dari kata "wono" (hutan) dan "boyo" (bahaya) — sebutan bagi kawasan hutan lebat di lereng yang dulu ditakuti pendatang. Seiring waktu, rombongan perintis membuka lahan, menetap, dan menjadikan tanah di perbukitan ini ladang yang subur.</p><p>Sejak dulu warga Wonoboyo hidup dari bertani. Sawah dan ladang di lereng-lereng bukit digarap turun-temurun, mengandalkan kesuburan tanah dan air yang mengalir dari perbukitan.</p><p>Seiring waktu desa terus berbenah — memperbaiki jalan, saluran irigasi, dan pelayanan bagi warga. Sebuah cafe di ketinggian sempat dirintis sebagai daya tarik, namun kini tidak lagi beroperasi. Wonoboyo tetap menjadi desa agraris yang tenang, khas kampung perbukitan.</p></div></div></section>
+
+<section class="sec-sm bg-sand"><div class="wrap-x"><div class="vm-grid"><div class="vm-card vm-visi reveal"><div class="vm-label">Visi</div><p>Terwujudnya Desa Wonoboyo yang mandiri, sejahtera, dan lestari — bertumpu pada pertanian, pelayanan publik yang baik, dan kegotongroyongan warganya.</p></div><div class="vm-card reveal d1"><div class="vm-label">Misi</div><ol class="misi-list"><li>Meningkatkan hasil dan kesejahteraan petani serta peternak desa.</li><li>Menumbuhkan UMKM dan usaha warga sebagai penghasilan tambahan.</li><li>Meningkatkan kualitas layanan publik dan infrastruktur dasar desa.</li><li>Menjaga kelestarian lingkungan dan sumber air desa.</li><li>Memperkuat kegotongroyongan dan kehidupan sosial warga.</li></ol></div></div></div></section>
+
+<section class="sec"><div class="wrap-x"><div class="sec-head stack" style="margin-bottom:36px"><div class="eyebrow reveal">Kondisi Geografis</div><h2 class="h2 reveal">Desa perbukitan di<br>ketinggian sejuk</h2></div><div class="facts reveal d1"><div class="fact"><div class="fact-k">Ketinggian</div><div class="fact-v">[…] mdpl</div></div><div class="fact"><div class="fact-k">Luas Wilayah</div><div class="fact-v">[…] hektar</div></div><div class="fact"><div class="fact-k">Topografi</div><div class="fact-v">Perbukitan berlereng</div></div><div class="fact"><div class="fact-k">Batas Utara</div><div class="fact-v">[…]</div></div><div class="fact"><div class="fact-k">Batas Selatan</div><div class="fact-v">[…]</div></div><div class="fact"><div class="fact-k">Jarak ke Kota</div><div class="fact-v">[…] km dari Bondowoso</div></div></div></div></section>
+
+<section class="sec-sm"><div class="wrap-x"><div class="sec-head stack" style="margin-bottom:36px"><div class="eyebrow reveal">Peta Wilayah</div><h2 class="h2 reveal">Letak &amp; batas desa</h2></div><div class="mapwrap reveal d1"><div id="map" class="mapel"></div><div class="map-note">Batas wilayah pada peta bersifat <strong>ilustratif</strong> dan bukan acuan hukum administrasi.</div></div></div></section>
+
+<section class="sec bg-forest"><div class="wrap-x"><div class="eyebrow reveal" style="color:#e8c79a">Statistik Kependudukan</div><h2 class="h2 cream reveal" style="margin-top:18px;margin-bottom:56px;max-width:640px">Potret warga Wonoboyo</h2><div class="demo-grid"><div class="bignums reveal"><div class="bignum"><div class="n">[…]</div><div class="u">Jiwa</div><div class="l" style="color:rgba(246,241,231,.7)">Total penduduk</div></div><div class="bignum"><div class="n">[…]</div><div class="u">KK</div><div class="l" style="color:rgba(246,241,231,.7)">Kepala keluarga</div></div><div class="bignum"><div class="n">[…]</div><div class="u">Jiwa</div><div class="l" style="color:rgba(246,241,231,.7)">Laki-laki</div></div><div class="bignum"><div class="n">[…]</div><div class="u">Jiwa</div><div class="l" style="color:rgba(246,241,231,.7)">Perempuan</div></div></div><div class="reveal d1"><div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#e8c79a;margin-bottom:22px">Komposisi Mata Pencaharian</div><p style="color:rgba(246,241,231,.82);font-size:15.5px;line-height:1.75;max-width:440px;margin:0">Rincian komposisi mata pencaharian warga sedang dihimpun dari hasil pendataan desa dan akan ditampilkan di bagian ini.</p></div></div><p class="stats-note">* Angka bersifat ilustratif — akan diperbarui sesuai data administrasi desa terbaru.</p></div></section>
+
+<dc-import name="Footer" hint-size="100%,420px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+  componentDidMount() {
+    const start = () => {
+      if (!window.L) { setTimeout(start, 200); return; }
+      const el = document.getElementById('map');
+      if (!el || el._map) return;
+      const center = [-7.905, 113.905];
+      const map = L.map(el, { scrollWheelZoom:false, attributionControl:true }).setView(center, 13);
+      el._map = map;
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 18, attribution: '© OpenStreetMap'
+      }).addTo(map);
+      const poly = [
+        [-7.882,113.878],[-7.876,113.912],[-7.888,113.938],[-7.912,113.945],
+        [-7.931,113.930],[-7.935,113.900],[-7.922,113.872],[-7.899,113.865]
+      ];
+      const shape = L.polygon(poly, { color:'#20362a', weight:2, fillColor:'#5f7d48', fillOpacity:0.22 }).addTo(map);
+      map.fitBounds(shape.getBounds(), { padding:[30,30] });
+      L.marker(center).addTo(map).bindPopup('<b>Kantor Desa Wonoboyo</b><br>Klabang, Bondowoso');
+      setTimeout(() => map.invalidateSize(), 300);
+    };
+    start();
+  }
+}
+</script>
+</body>
+</html>

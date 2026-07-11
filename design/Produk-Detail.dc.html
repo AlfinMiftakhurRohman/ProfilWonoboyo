@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Hanken+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./styles.css">
+<script src="./site.js" defer></script>
+<style>
+.pd-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+.pd-main{aspect-ratio:1/1;border-radius:10px}
+.pd-thumbs{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:12px}
+.pd-thumb{aspect-ratio:1/1;border-radius:6px;cursor:pointer}
+.pd-price{font-family:'Newsreader',serif;font-size:clamp(34px,4vw,46px);color:#20362a;letter-spacing:-.02em;margin:8px 0 4px}
+.pd-price small{font-family:'Hanken Grotesk',sans-serif;font-size:15px;color:#8b8267}
+.pd-meta{display:flex;flex-direction:column;gap:14px;margin:28px 0;padding:24px 0;border-top:1px solid rgba(27,26,21,.1);border-bottom:1px solid rgba(27,26,21,.1)}
+.pd-meta-row{display:flex;gap:14px;font-size:14.5px}
+.pd-meta-k{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#8b8267;width:110px;flex:none;padding-top:2px}
+.pd-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:8px}
+@media(max-width:900px){.pd-grid{grid-template-columns:1fr;gap:32px}}
+</style>
+</helmet>
+<div>
+<dc-import name="Nav" active="produk" hint-size="100%,80px"></dc-import>
+
+<header class="phero" style="min-height:auto"><div class="phero-media ph ph-dark"></div><div class="phero-scrim"></div><div class="wrap-x phero-inner" style="padding:34px 0 28px"><div class="crumb" style="margin:0"><a href="Beranda.dc.html">Beranda</a><span class="sep">/</span><a href="Produk-Desa.dc.html">Produk Desa</a><span class="sep">/</span><span>[NAMA PRODUK]</span></div></div></header>
+
+<section class="sec-sm"><div class="wrap-x"><div class="pd-grid"><div class="reveal"><div class="pd-main ph"><span class="ph-lab">Foto produk<br>utama · 1:1</span></div><div class="pd-thumbs"><div class="pd-thumb ph"><span class="ph-lab" style="font-size:9px">1:1</span></div><div class="pd-thumb ph"><span class="ph-lab" style="font-size:9px">1:1</span></div><div class="pd-thumb ph"><span class="ph-lab" style="font-size:9px">1:1</span></div><div class="pd-thumb ph"><span class="ph-lab" style="font-size:9px">1:1</span></div></div></div>
+<div class="reveal d1"><span class="prod-cat" style="position:static;display:inline-block;margin-bottom:16px">[KATEGORI]</span><h1 class="h2" style="margin-bottom:8px">[NAMA PRODUK]</h1><div class="prod-seller" style="margin-bottom:20px">oleh [NAMA PENJUAL]</div><div class="pd-price">[HARGA] <small>[SATUAN]</small></div><p class="body-lg" style="font-size:15.5px;margin-top:22px">[Deskripsi produk akan tampil di sini — diisi oleh admin desa bersama penjual.]</p>
+<div class="pd-meta"><div class="pd-meta-row"><span class="pd-meta-k">Penjual</span><span>[NAMA PENJUAL]</span></div><div class="pd-meta-row"><span class="pd-meta-k">Kontak</span><span>[NOMOR WA PENJUAL]</span></div><div class="pd-meta-row"><span class="pd-meta-k">Ketersediaan</span><span>[STATUS]</span></div></div>
+<div class="pd-actions"><span class="btn btn-wa" style="opacity:.55;cursor:default">Pesan via WhatsApp <span class="arw2">→</span></span><a href="Produk-Desa.dc.html" class="btn btn-ghost">Produk lainnya</a></div>
+<p class="stats-note dark" style="margin-top:24px">* Pemesanan dilakukan langsung ke penjual. Website ini hanya menampilkan katalog, tanpa transaksi online.</p></div></div></div></section>
+
+<dc-import name="Footer" hint-size="100%,420px"></dc-import>
+</div>
+</x-dc>
+</body>
+</html>

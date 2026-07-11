@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Hanken+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./styles.css">
+<script src="./site.js" defer></script>
+<style>.soon{display:flex;gap:20px;align-items:flex-start;padding:24px 28px;border:1px solid rgba(32,54,42,.16);border-radius:12px;background:#efe7d6;margin-bottom:44px}.soon-b{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#b9762b;flex:none;padding-top:2px}.soon p{margin:0;font-size:15px;line-height:1.65;color:#4a463a}.prod-price.ph-txt{color:#8b8267}@media(max-width:560px){.soon{flex-direction:column;gap:10px}}</style>
+</helmet>
+<div>
+<dc-import name="Nav" active="produk" hint-size="100%,80px"></dc-import>
+
+<header class="phero"><div class="phero-media ph ph-dark"><span class="ph-lab">Foto hasil bumi &amp; olahan warga · 1920 × 900</span></div><div class="phero-scrim"></div><div class="wrap-x phero-inner"><div class="crumb"><a href="Beranda.dc.html">Beranda</a><span class="sep">/</span><span>Produk Desa</span></div><h1 class="phero-title">Produk Warga Wonoboyo</h1><p class="phero-sub">Halaman ini akan menampilkan produk hasil bumi dan olahan warga. Pemesanan dilakukan langsung ke penjual — website hanya menampilkan katalog, tanpa transaksi online.</p></div></header>
+
+<section class="sec"><div class="wrap-x"><div class="soon reveal"><span class="soon-b">Segera hadir</span><p>Katalog produk warga masih dalam tahap disiapkan bersama pelaku usaha desa. Kartu di bawah adalah contoh tata letak — data produk, penjual, harga, dan nomor WhatsApp akan diisi oleh admin desa.</p></div>
+<div class="prod-grid"><sc-for list="{{ products }}" as="p" hint-placeholder-count="3"><div class="prod reveal"><div class="prod-media"><span class="card-img ph"><span class="ph-lab">Foto produk</span></span><span class="prod-cat">[KATEGORI]</span></div><div class="prod-body"><h3 class="prod-name">[NAMA PRODUK]</h3><div class="prod-seller">oleh [NAMA PENJUAL]</div><div class="prod-foot"><span class="prod-price ph-txt">[HARGA]</span><span class="btn btn-wa btn-sm" style="opacity:.55;cursor:default">[NOMOR WA]</span></div></div></div></sc-for></div>
+</div></section>
+
+<dc-import name="Footer" hint-size="100%,420px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return { products: [1, 2, 3] };
+  }
+}
+</script>
+</body>
+</html>
