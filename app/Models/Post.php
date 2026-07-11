@@ -50,6 +50,16 @@ class Post extends Model
         });
     }
 
+    /** Label kategori yang enak dibaca (nilai DB: berita|pengumuman). */
+    protected function categoryLabel(): Attribute
+    {
+        return Attribute::get(fn () => match ($this->category) {
+            'pengumuman' => 'Pengumuman',
+            'berita' => 'Berita',
+            default => ucfirst((string) $this->category),
+        });
+    }
+
     /** Ukuran file lampiran (dari file fisik), atau null bila tak ada. */
     public function attachmentSize(): ?string
     {
