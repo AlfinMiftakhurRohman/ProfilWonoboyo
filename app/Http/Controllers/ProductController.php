@@ -27,15 +27,8 @@ class ProductController extends Controller
     {
         $product = Product::published()->where('slug', $slug)->with('images')->firstOrFail();
 
-        // "Produk lainnya": kategori sama, kecualikan yang dibuka, dibatasi.
-        $others = Product::published()
-            ->where('category', $product->category)
-            ->where('id', '!=', $product->id)
-            ->ordered()
-            ->with('primaryImage')
-            ->take(3)
-            ->get();
-
-        return view('pages.produk.show', compact('product', 'others'));
+        // Desain detail produk hanya menyediakan tombol "Produk lainnya" menuju
+        // katalog (bukan grid terkait), jadi tak perlu query produk lain di sini.
+        return view('pages.produk.show', compact('product'));
     }
 }

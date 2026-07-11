@@ -19,6 +19,9 @@
     --}}
     @php
         $fact = fn ($key, $suffix = '') => filled($settings[$key] ?? null) ? $settings[$key] . $suffix : '—';
+        // Prosa dari Pengaturan dipakai bila sudah diisi admin (bukan placeholder
+        // '[...]'); selain itu tampilkan teks bawaan desain di bawah ini.
+        $hasProse = fn ($key) => filled($settings[$key] ?? null) && ! str_starts_with(trim($settings[$key]), '[');
     @endphp
 
     <header class="phero">
@@ -44,9 +47,15 @@
                 <h2 class="h2 reveal">Bermula dari sebidang<br>tanah subur di lereng</h2>
             </div>
             <div class="body-lg wrap-narrow reveal d1">
-                <p class="dropcap">Konon nama Wonoboyo berasal dari kata "wono" (hutan) dan "boyo" (bahaya) — sebutan bagi kawasan hutan lebat di lereng yang dulu ditakuti pendatang. Seiring waktu, rombongan perintis membuka lahan, menetap, dan menjadikan tanah di perbukitan ini ladang yang subur.</p>
-                <p>Sejak dulu warga Wonoboyo hidup dari bertani. Sawah dan ladang di lereng-lereng bukit digarap turun-temurun, mengandalkan kesuburan tanah dan air yang mengalir dari perbukitan.</p>
-                <p>Seiring waktu desa terus berbenah — memperbaiki jalan, saluran irigasi, dan pelayanan bagi warga. Sebuah cafe di ketinggian sempat dirintis sebagai daya tarik, namun kini tidak lagi beroperasi. Wonoboyo tetap menjadi desa agraris yang tenang, khas kampung perbukitan.</p>
+                @if ($hasProse('sejarah'))
+                    @foreach (preg_split('/\R+/u', trim($settings['sejarah'])) as $i => $par)
+                        <p @class(['dropcap' => $i === 0])>{{ $par }}</p>
+                    @endforeach
+                @else
+                    <p class="dropcap">Konon nama Wonoboyo berasal dari kata "wono" (hutan) dan "boyo" (bahaya) — sebutan bagi kawasan hutan lebat di lereng yang dulu ditakuti pendatang. Seiring waktu, rombongan perintis membuka lahan, menetap, dan menjadikan tanah di perbukitan ini ladang yang subur.</p>
+                    <p>Sejak dulu warga Wonoboyo hidup dari bertani. Sawah dan ladang di lereng-lereng bukit digarap turun-temurun, mengandalkan kesuburan tanah dan air yang mengalir dari perbukitan.</p>
+                    <p>Seiring waktu desa terus berbenah — memperbaiki jalan, saluran irigasi, dan pelayanan bagi warga. Sebuah cafe di ketinggian sempat dirintis sebagai daya tarik, namun kini tidak lagi beroperasi. Wonoboyo tetap menjadi desa agraris yang tenang, khas kampung perbukitan.</p>
+                @endif
             </div>
         </div>
     </section>
@@ -56,16 +65,26 @@
             <div class="vm-grid">
                 <div class="vm-card vm-visi reveal">
                     <div class="vm-label">Visi</div>
-                    <p>Terwujudnya Desa Wonoboyo yang mandiri, sejahtera, dan lestari — bertumpu pada pertanian, pelayanan publik yang baik, dan kegotongroyongan warganya.</p>
+                    @if ($hasProse('visi'))
+                        <p>{{ $settings['visi'] }}</p>
+                    @else
+                        <p>Terwujudnya Desa Wonoboyo yang mandiri, sejahtera, dan lestari — bertumpu pada pertanian, pelayanan publik yang baik, dan kegotongroyongan warganya.</p>
+                    @endif
                 </div>
                 <div class="vm-card reveal d1">
                     <div class="vm-label">Misi</div>
                     <ol class="misi-list">
-                        <li>Meningkatkan hasil dan kesejahteraan petani serta peternak desa.</li>
-                        <li>Menumbuhkan UMKM dan usaha warga sebagai penghasilan tambahan.</li>
-                        <li>Meningkatkan kualitas layanan publik dan infrastruktur dasar desa.</li>
-                        <li>Menjaga kelestarian lingkungan dan sumber air desa.</li>
-                        <li>Memperkuat kegotongroyongan dan kehidupan sosial warga.</li>
+                        @if ($hasProse('misi'))
+                            @foreach (preg_split('/\R+/u', trim($settings['misi'])) as $poin)
+                                <li>{{ $poin }}</li>
+                            @endforeach
+                        @else
+                            <li>Meningkatkan hasil dan kesejahteraan petani serta peternak desa.</li>
+                            <li>Menumbuhkan UMKM dan usaha warga sebagai penghasilan tambahan.</li>
+                            <li>Meningkatkan kualitas layanan publik dan infrastruktur dasar desa.</li>
+                            <li>Menjaga kelestarian lingkungan dan sumber air desa.</li>
+                            <li>Memperkuat kegotongroyongan dan kehidupan sosial warga.</li>
+                        @endif
                     </ol>
                 </div>
             </div>

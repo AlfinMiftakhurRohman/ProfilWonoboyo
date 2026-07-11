@@ -23,8 +23,7 @@
     {{--
         Diporting dari design/Produk-Detail.dc.html. Data dari ProductController@show:
           $product — Product published (dengan images, primary lebih dulu)
-          $others  — s.d. 3 produk lain kategori sama (belum dirender: desain hanya
-                     menyediakan tombol "Produk lainnya" ke katalog, bukan grid).
+        Tombol "Produk lainnya" mengarah ke katalog (desain tak memakai grid terkait).
     --}}
     @php $main = $product->images->first(); @endphp
 

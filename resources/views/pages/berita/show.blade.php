@@ -64,9 +64,10 @@
                 <p class="art-cap reveal">{{ $post->image_caption }}</p>
             @endif
 
-            {{-- body = rich text; penyaringan HTML dilakukan saat disimpan (Tahap 3). --}}
+            {{-- rendered_body: teks polos otomatis jadi paragraf & di-escape;
+                 HTML yang ditulis admin dipakai apa adanya (lihat Post::renderedBody). --}}
             <div class="art body-lg reveal d1">
-                {!! $post->body !!}
+                {!! $post->rendered_body !!}
             </div>
 
             @if ($post->attachment)

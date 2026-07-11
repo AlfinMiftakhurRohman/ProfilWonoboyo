@@ -17,7 +17,7 @@
                 <x-admin.input name="title" label="Judul" :value="$post->title" required />
                 <x-admin.input name="slug" label="Slug (opsional)" :value="$post->slug" hint="Kosongkan untuk dibuat otomatis dari judul." />
                 <x-admin.textarea name="excerpt" label="Ringkasan" :value="$post->excerpt" rows="2" hint="Tampil di daftar & pratinjau. Maks 500 karakter." />
-                <x-admin.textarea name="body" label="Isi Berita" :value="$post->body" rows="14" hint="Boleh HTML sederhana (paragraf, tebal, tautan)." required />
+                <x-admin.textarea name="body" label="Isi Berita" :value="$post->body" rows="14" hint="Ketik biasa saja — pisahkan paragraf dengan baris kosong. Paham HTML? Tag akan dihormati." required />
             </section>
 
             <section class="rounded-xl bg-white border border-ink/10 shadow-sm p-6 space-y-4">
