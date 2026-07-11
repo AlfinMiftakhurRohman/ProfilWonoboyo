@@ -17,7 +17,7 @@ class GallerySeeder extends Seeder
 
         foreach ($ratios as $i => $ratio) {
             Gallery::create([
-                'title' => '[FOTO KEGIATAN DESA ' . ($i + 1) . ']',
+                'title' => '[FOTO KEGIATAN DESA '.($i + 1).']',
                 'image' => null,
                 'caption' => null,
                 'ratio' => $ratio,

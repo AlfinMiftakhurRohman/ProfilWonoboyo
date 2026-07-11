@@ -92,14 +92,15 @@ class OfficialController extends Controller
             return null;
         }
         $file = $request->file('photo');
-        $name = Str::random(20) . '.' . $file->getClientOriginalExtension();
+        $name = Str::random(20).'.'.$file->getClientOriginalExtension();
         $file->move(public_path('uploads/officials'), $name);
+
         return $name;
     }
 
     private function deleteFile(?string $name): void
     {
-        if ($name && is_file($path = public_path('uploads/officials/' . $name))) {
+        if ($name && is_file($path = public_path('uploads/officials/'.$name))) {
             @unlink($path);
         }
     }

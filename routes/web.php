@@ -1,5 +1,11 @@
 <?php
 
+use App\Http\Controllers\Admin\DashboardController as AdminDashboard;
+use App\Http\Controllers\Admin\GalleryController as AdminGallery;
+use App\Http\Controllers\Admin\OfficialController as AdminOfficial;
+use App\Http\Controllers\Admin\PostController as AdminPost;
+use App\Http\Controllers\Admin\ProductController as AdminProduct;
+use App\Http\Controllers\Admin\SettingController as AdminSetting;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PageController;
@@ -7,13 +13,6 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-
-use App\Http\Controllers\Admin\DashboardController as AdminDashboard;
-use App\Http\Controllers\Admin\GalleryController as AdminGallery;
-use App\Http\Controllers\Admin\OfficialController as AdminOfficial;
-use App\Http\Controllers\Admin\PostController as AdminPost;
-use App\Http\Controllers\Admin\ProductController as AdminProduct;
-use App\Http\Controllers\Admin\SettingController as AdminSetting;
 
 /*
 |--------------------------------------------------------------------------
@@ -53,9 +52,9 @@ Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
     Route::resource('gallery', AdminGallery::class)->except('show')->parameters(['gallery' => 'gallery']);
 });
 
-// Breeze mengarahkan ke sini setelah login → teruskan ke panel admin.
-Route::get('/dashboard', fn () => redirect()->route('admin.dashboard'))
-    ->middleware(['auth', 'verified'])->name('dashboard');
+// Breeze mengarahkan ke 'dashboard' setelah login → teruskan ke panel admin.
+// Route::redirect (bukan closure) supaya route:cache tetap jalan saat deploy.
+Route::redirect('/dashboard', '/admin')->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

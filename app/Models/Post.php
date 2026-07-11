@@ -46,6 +46,7 @@ class Post extends Model
     {
         return Attribute::get(function () {
             $words = str_word_count(strip_tags((string) $this->body));
+
             return max(1, (int) ceil($words / 200));
         });
     }
@@ -82,7 +83,7 @@ class Post extends Model
             $paragraphs = preg_split('/\R{2,}/u', $body);
 
             return collect($paragraphs)
-                ->map(fn ($p) => '<p>' . nl2br(e(trim($p))) . '</p>')
+                ->map(fn ($p) => '<p>'.nl2br(e(trim($p))).'</p>')
                 ->implode("\n");
         });
     }
@@ -93,10 +94,11 @@ class Post extends Model
         if (! $this->attachment) {
             return null;
         }
-        $path = public_path('uploads/posts/' . $this->attachment);
+        $path = public_path('uploads/posts/'.$this->attachment);
         if (! is_file($path)) {
             return null;
         }
+
         return human_filesize(filesize($path));
     }
 }

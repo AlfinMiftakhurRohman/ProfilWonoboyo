@@ -61,6 +61,7 @@ class Official extends Model
             foreach (array_slice($words, 0, 2) as $w) {
                 $ini .= mb_substr($w, 0, 1);
             }
+
             return mb_strtoupper($ini);
         });
     }

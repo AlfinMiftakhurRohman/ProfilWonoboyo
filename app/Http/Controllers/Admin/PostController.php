@@ -13,7 +13,7 @@ class PostController extends Controller
     {
         $posts = Post::query()
             ->when($request->filled('kategori'), fn ($q) => $q->where('category', $request->kategori))
-            ->when($request->filled('q'), fn ($q) => $q->where('title', 'like', '%' . $request->q . '%'))
+            ->when($request->filled('q'), fn ($q) => $q->where('title', 'like', '%'.$request->q.'%'))
             ->latest()
             ->paginate(12)
             ->withQueryString();
@@ -23,7 +23,7 @@ class PostController extends Controller
 
     public function create()
     {
-        return view('admin.posts.form', ['post' => new Post()]);
+        return view('admin.posts.form', ['post' => new Post]);
     }
 
     public function store(Request $request)
@@ -107,6 +107,7 @@ class PostController extends Controller
         if (! empty($data['is_published'])) {
             return $post?->published_at ?? now();
         }
+
         return $post?->published_at;
     }
 
@@ -116,8 +117,9 @@ class PostController extends Controller
         $slug = $base;
         $i = 2;
         while (Post::where('slug', $slug)->when($ignoreId, fn ($q) => $q->where('id', '!=', $ignoreId))->exists()) {
-            $slug = $base . '-' . $i++;
+            $slug = $base.'-'.$i++;
         }
+
         return $slug;
     }
 
@@ -127,8 +129,9 @@ class PostController extends Controller
             return null;
         }
         $file = $request->file($field);
-        $name = Str::random(20) . '.' . $file->getClientOriginalExtension();
+        $name = Str::random(20).'.'.$file->getClientOriginalExtension();
         $file->move(public_path('uploads/posts'), $name);
+
         return $name;
     }
 
@@ -138,15 +141,16 @@ class PostController extends Controller
             return [null, null];
         }
         $file = $request->file('attachment');
-        $name = Str::random(20) . '.' . $file->getClientOriginalExtension();
+        $name = Str::random(20).'.'.$file->getClientOriginalExtension();
         $original = $file->getClientOriginalName();
         $file->move(public_path('uploads/posts'), $name);
+
         return [$name, $original];
     }
 
     private function deleteFile(?string $name): void
     {
-        if ($name && is_file($path = public_path('uploads/posts/' . $name))) {
+        if ($name && is_file($path = public_path('uploads/posts/'.$name))) {
             @unlink($path);
         }
     }

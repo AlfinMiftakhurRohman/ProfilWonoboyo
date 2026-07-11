@@ -62,7 +62,7 @@
             </button>
             <h1 class="text-lg font-semibold text-forest">@yield('title', 'Panel')</h1>
             <div class="ml-auto flex items-center gap-4">
-                <span class="hidden sm:block text-sm text-muted">{{ Auth::user()->name }}</span>
+                <a href="{{ route('profile.edit') }}" class="text-sm font-medium text-muted hover:text-forest">{{ Auth::user()->name }}</a>
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
                     <button type="submit" class="text-sm font-medium text-amber hover:underline">Keluar</button>

@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Product;
-use App\Models\ProductImage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -15,7 +14,7 @@ class ProductController extends Controller
         $products = Product::query()
             ->with('primaryImage')
             ->when($request->filled('kategori'), fn ($q) => $q->where('category', $request->kategori))
-            ->when($request->filled('q'), fn ($q) => $q->where('name', 'like', '%' . $request->q . '%'))
+            ->when($request->filled('q'), fn ($q) => $q->where('name', 'like', '%'.$request->q.'%'))
             ->ordered()
             ->paginate(12)
             ->withQueryString();
@@ -109,7 +108,7 @@ class ProductController extends Controller
             return;
         }
         foreach ($request->file('images') as $file) {
-            $name = Str::random(20) . '.' . $file->getClientOriginalExtension();
+            $name = Str::random(20).'.'.$file->getClientOriginalExtension();
             $file->move(public_path('uploads/products'), $name);
             $product->images()->create([
                 'image' => $name,
@@ -138,14 +137,15 @@ class ProductController extends Controller
         $slug = $base;
         $i = 2;
         while (Product::where('slug', $slug)->when($ignoreId, fn ($q) => $q->where('id', '!=', $ignoreId))->exists()) {
-            $slug = $base . '-' . $i++;
+            $slug = $base.'-'.$i++;
         }
+
         return $slug;
     }
 
     private function deleteFile(?string $name): void
     {
-        if ($name && is_file($path = public_path('uploads/products/' . $name))) {
+        if ($name && is_file($path = public_path('uploads/products/'.$name))) {
             @unlink($path);
         }
     }

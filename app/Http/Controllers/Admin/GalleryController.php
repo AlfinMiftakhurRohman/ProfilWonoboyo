@@ -67,7 +67,7 @@ class GalleryController extends Controller
             'caption' => 'nullable|string|max:255',
             'ratio' => 'required|in:1/1,4/3,3/4,3/2,2/3,16/9',
             'sort_order' => 'nullable|integer',
-            'image' => ($requireImage ? 'required' : 'nullable') . '|image|max:4096',
+            'image' => ($requireImage ? 'required' : 'nullable').'|image|max:4096',
         ]) + ['sort_order' => (int) $request->input('sort_order', 0)];
     }
 
@@ -77,14 +77,15 @@ class GalleryController extends Controller
             return null;
         }
         $file = $request->file('image');
-        $name = Str::random(20) . '.' . $file->getClientOriginalExtension();
+        $name = Str::random(20).'.'.$file->getClientOriginalExtension();
         $file->move(public_path('uploads/galleries'), $name);
+
         return $name;
     }
 
     private function deleteFile(?string $name): void
     {
-        if ($name && is_file($path = public_path('uploads/galleries/' . $name))) {
+        if ($name && is_file($path = public_path('uploads/galleries/'.$name))) {
             @unlink($path);
         }
     }
