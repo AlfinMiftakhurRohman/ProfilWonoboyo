@@ -24,3 +24,6 @@ yarn-error.log
 
 # Artefak editor desain (bukan bagian app)
 /design/.thumbnail
+
+# Launcher dev lokal (berisi path Laragon spesifik mesin)
+/run.bat
