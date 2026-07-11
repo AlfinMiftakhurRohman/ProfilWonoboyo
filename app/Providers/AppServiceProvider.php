@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Models\Setting;
 use Carbon\Carbon;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
@@ -25,6 +26,11 @@ class AppServiceProvider extends ServiceProvider
         // Format tanggal berbahasa Indonesia (mis. "10 Juli 2026") lewat
         // Carbon->translatedFormat()/->isoFormat() di seluruh view.
         Carbon::setLocale('id');
+
+        // Paginasi memakai view on-brand (styles.css tidak diubah); default
+        // Laravel adalah Tailwind yang tidak dimuat di halaman publik.
+        Paginator::defaultView('pagination.wonoboyo');
+        Paginator::defaultSimpleView('pagination.wonoboyo');
 
         // $settings dibagikan ke semua halaman publik + komponen situs (footer,
         // dsb.) karena Setting::map() dibaca di hampir setiap halaman (kontak,

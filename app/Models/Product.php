@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
@@ -51,5 +52,27 @@ class Product extends Model
     public function scopeOrdered(Builder $query): Builder
     {
         return $query->orderBy('sort_order')->orderBy('id');
+    }
+
+    /** Label kategori yang enak dibaca (nilai DB: umkm|hasil_tani|olahan). */
+    protected function categoryLabel(): Attribute
+    {
+        return Attribute::get(fn () => match ($this->category) {
+            'umkm' => 'UMKM',
+            'hasil_tani' => 'Hasil Tani',
+            'olahan' => 'Olahan',
+            default => ucfirst((string) $this->category),
+        });
+    }
+
+    /** Label ketersediaan (nilai DB: tersedia|habis|pre_order). */
+    protected function availabilityLabel(): Attribute
+    {
+        return Attribute::get(fn () => match ($this->availability) {
+            'tersedia' => 'Tersedia',
+            'habis' => 'Habis',
+            'pre_order' => 'Pre-order',
+            default => (string) $this->availability,
+        });
     }
 }
