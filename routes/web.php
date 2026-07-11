@@ -8,6 +8,13 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\Admin\DashboardController as AdminDashboard;
+use App\Http\Controllers\Admin\GalleryController as AdminGallery;
+use App\Http\Controllers\Admin\OfficialController as AdminOfficial;
+use App\Http\Controllers\Admin\PostController as AdminPost;
+use App\Http\Controllers\Admin\ProductController as AdminProduct;
+use App\Http\Controllers\Admin\SettingController as AdminSetting;
+
 /*
 |--------------------------------------------------------------------------
 | Halaman publik (tanpa login)
@@ -30,12 +37,25 @@ Route::get('/kontak', [PageController::class, 'kontak'])->name('kontak');
 
 /*
 |--------------------------------------------------------------------------
-| Area admin (Breeze) — panel /admin dibangun di Tahap 3
+| Area admin (login wajib) — panel /admin
 |--------------------------------------------------------------------------
+| Semua CRUD isi situs: pengaturan, berita, produk, perangkat, galeri.
 */
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
+    Route::get('/', [AdminDashboard::class, 'index'])->name('dashboard');
+
+    Route::get('settings', [AdminSetting::class, 'edit'])->name('settings.edit');
+    Route::put('settings', [AdminSetting::class, 'update'])->name('settings.update');
+
+    Route::resource('posts', AdminPost::class)->except('show');
+    Route::resource('products', AdminProduct::class)->except('show');
+    Route::resource('officials', AdminOfficial::class)->except('show');
+    Route::resource('gallery', AdminGallery::class)->except('show')->parameters(['gallery' => 'gallery']);
+});
+
+// Breeze mengarahkan ke sini setelah login → teruskan ke panel admin.
+Route::get('/dashboard', fn () => redirect()->route('admin.dashboard'))
+    ->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

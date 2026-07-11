@@ -33,7 +33,7 @@
                     <div class="gitem" data-lightbox data-cap="{{ $cap }}">
                         <span class="card-img ph" style="position:relative;aspect-ratio:{{ $p->ratio ?: '1/1' }};display:block">
                             @if ($p->image)
-                                <img src="{{ asset('uploads/gallery/' . $p->image) }}" alt="{{ $cap }}">
+                                <img src="{{ asset('uploads/galleries/' . $p->image) }}" alt="{{ $cap }}">
                             @else
                                 <span class="ph-lab">{{ $cap }}</span>
                             @endif
